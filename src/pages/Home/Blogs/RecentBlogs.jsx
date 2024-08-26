@@ -4,6 +4,7 @@ import blog2 from '../../../assets/image/banner9.jpg'
 import blog3 from '../../../assets/image/banner10.jpg'
 
 const RecentBlogs = () => {
+    const currentDate = new Date();
     return (
         <div>
             <section class="bg-white dark:bg-gray-900">
@@ -32,7 +33,7 @@ const RecentBlogs = () => {
                                 </h1>
 
                                 <p class="mt-2 text-gray-500 dark:text-gray-400">
-                                Books are a rich source of information, providing insights into various subjects, cultures, and perspectives.
+                                    Books are a rich source of information, providing insights into various subjects, cultures, and perspectives.
                                 </p>
 
                                 <div class="flex items-center justify-between mt-4">
@@ -41,7 +42,7 @@ const RecentBlogs = () => {
                                             John snow
                                         </a>
 
-                                        <p class="text-sm text-gray-500 dark:text-gray-400">February 1, 2022</p>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">{currentDate.toDateString()}</p>
                                     </div>
 
                                     <a href="#" class="inline-block text-blue-500 underline hover:text-blue-400">Read more</a>
@@ -60,7 +61,7 @@ const RecentBlogs = () => {
                                     All the features you want to know</h1>
 
                                 <p class="mt-2 text-gray-500 dark:text-gray-400">
-                                Books are organized and cataloged using systems like the Dewey Decimal Classification or Library of Congress Classification, making it easier for users to find what they need.
+                                    Books are organized and cataloged using systems like the Dewey Decimal Classification or Library of Congress Classification, making it easier for users to find what they need.
                                 </p>
 
                                 <div class="flex items-center justify-between mt-4">
@@ -69,7 +70,7 @@ const RecentBlogs = () => {
                                             Arthur Melo
                                         </a>
 
-                                        <p class="text-sm text-gray-500 dark:text-gray-400">February 6, 2022</p>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">{currentDate.toDateString()}</p>
                                     </div>
 
                                     <a href="#" class="inline-block text-blue-500 underline hover:text-blue-400">Read more</a>
@@ -89,7 +90,7 @@ const RecentBlogs = () => {
                                 </h1>
 
                                 <p class="mt-2 text-gray-500 dark:text-gray-400">
-                                The Bodleian Libraries house over 13 million printed items, including rare books, manuscripts, maps, and archives.
+                                    The Bodleian Libraries house over 13 million printed items, including rare books, manuscripts, maps, and archives.
                                 </p>
 
                                 <div class="flex items-center justify-between mt-4">
@@ -98,7 +99,7 @@ const RecentBlogs = () => {
                                             Tom Hank
                                         </a>
 
-                                        <p class="text-sm text-gray-500 dark:text-gray-400">February 19, 2022</p>
+                                        <p class="text-sm text-gray-500 dark:text-gray-400">{currentDate.toDateString()}</p>
                                     </div>
 
                                     <a href="#" class="inline-block text-blue-500 underline hover:text-blue-400">Read more</a>
