@@ -25,6 +25,21 @@ const Register = () => {
         const photo = form.photo.value;
         const pass = form.password.value;
         console.log({ email, name, photo, pass });
+        setRegisterError('');
+        setSuccess('');
+        if (pass.length < 6) {
+            setRegisterError('Password should be at least 6 characters or longer');
+            return;
+        }
+        else if (!/[A-Z]/.test(pass)) {
+            setRegisterError('Your password must have one uppercase character.');
+            return;
+        }
+        else if (!/[a-z]/.test(pass)) {
+            setRegisterError('Your password must have one lowercase character.');
+            return;
+        }
+
         try {
             // user registration
             const result = await createUser(email, pass);
@@ -177,6 +192,7 @@ const Register = () => {
                                 name='email'
                                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                                 type='email'
+                                required
                             />
                         </div>
 

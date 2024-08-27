@@ -142,31 +142,33 @@ const Login = () => {
                                 id='LoggingEmailAddress'
                                 autoComplete='email'
                                 name='email'
+                                required
                                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                                 type='email'
                             />
                         </div>
 
                         <div className='mt-4'>
-                           
-                        <div className='mt-4 form-control relative'>
-                            <div className='flex justify-between '>
-                                <label
-                                    className='block mb-2 text-sm font-medium text-gray-600 '
-                                    htmlFor='loggingPassword'
-                                >
-                                    Password
-                                </label>
-                            </div>
 
-                            <input type={showPassword ? "text" : "password"}
-                                placeholder="password" name="password" className="input input-bordered" required />
-                            <span className="absolute text-xl top-2/4 right-1 space-x-reverse" onClick={() => setShowPassword(!showPassword)}>
-                                {
-                                    showPassword ? <FaRegEyeSlash></FaRegEyeSlash> : <FaRegEye></FaRegEye>
-                                }
-                            </span>
-                        </div>
+                            <div className='mt-4 form-control relative'>
+                                <div className='flex justify-between ' >
+                                    <label
+                                        className='block mb-2 text-sm font-medium text-gray-600 '
+                                        htmlFor='loggingPassword'
+                                        
+                                    >
+                                        Password
+                                    </label>
+                                </div>
+
+                                <input type={showPassword ? "text" : "password"}
+                                    placeholder="password" name="password" className="input input-bordered" required />
+                                <span className="absolute text-xl top-2/4 right-1 space-x-reverse" onClick={() => setShowPassword(!showPassword)}>
+                                    {
+                                        showPassword ? <FaRegEyeSlash></FaRegEyeSlash> : <FaRegEye></FaRegEye>
+                                    }
+                                </span>
+                            </div>
                         </div>
                         <div className='mt-6'>
                             <button
