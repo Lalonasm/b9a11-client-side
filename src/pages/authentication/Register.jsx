@@ -1,14 +1,19 @@
 
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import bgImg from '../../assets/image/banner1.jpg';
 import logo from '../../assets/image/logo.png'
 import { AuthContext } from "../../provider/AuthProvider"
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
+import Swal from "sweetalert2";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Register = () => {
-
-    const navigate = useNavigate()
+    const location = useLocation();
+    const [registerError, setRegisterError] = useState('');
+    const [success, setSuccess] = useState('');
+    const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState(false)
 
     const { createUser, user, setUser, updateUserProfile, signInWithGoogle } = useContext(AuthContext);
 
@@ -26,12 +31,25 @@ const Register = () => {
             console.log(result);
             await updateUserProfile(name, photo);
             setUser({ ...user, photoURL: photo, displayName: name });
-            navigate('/');
-            toast.success('Signup successful')
+            toast.success('Signup successful');
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "You are Registered Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            navigate(location?.state ? location.state : '/');
         }
         catch (err) {
             console.log(err)
             toast.error(err?.message)
+            Swal.fire({
+                title: 'Error!',
+                text: 'Do you want to continue',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+            })
         }
     }
 
@@ -41,11 +59,25 @@ const Register = () => {
         try {
             await signInWithGoogle();
             toast.success('Signin Successful ');
-            navigate('/');
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "You are login Successfully",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+            navigate(location?.state ? location.state : '/');
         }
         catch (err) {
             console.log(err);
             toast.error(err?.message)
+            Swal.fire({
+                title: 'Error!',
+                text: 'Do you want to continue',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+            })
         }
     }
 
@@ -148,8 +180,8 @@ const Register = () => {
                             />
                         </div>
 
-                        <div className='mt-4'>
-                            <div className='flex justify-between'>
+                        <div className='mt-4 form-control relative'>
+                            <div className='flex justify-between '>
                                 <label
                                     className='block mb-2 text-sm font-medium text-gray-600 '
                                     htmlFor='loggingPassword'
@@ -158,13 +190,13 @@ const Register = () => {
                                 </label>
                             </div>
 
-                            <input
-                                id='loggingPassword'
-                                autoComplete='current-password'
-                                name='password'
-                                className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
-                                type='password'
-                            />
+                            <input type={showPassword ? "text" : "password"}
+                                placeholder="password" name="password" className="input input-bordered" required />
+                            <span className="absolute text-xl top-2/4 right-1 space-x-reverse" onClick={() => setShowPassword(!showPassword)}>
+                                {
+                                    showPassword ? <FaRegEyeSlash></FaRegEyeSlash> : <FaRegEye></FaRegEye>
+                                }
+                            </span>
                         </div>
                         <div className='mt-6'>
                             <button
@@ -175,6 +207,12 @@ const Register = () => {
                             </button>
                         </div>
                     </form>
+                    {
+                        registerError && <p className="text-red-700 font-bold mb-4">{registerError}</p>
+                    }
+                    {
+                        success && <p className="text-green-700 font-bold mb-4">{success}</p>
+                    }
 
                     <div className='flex items-center justify-between mt-4'>
                         <span className='w-1/5 border-b  md:w-1/4'></span>
