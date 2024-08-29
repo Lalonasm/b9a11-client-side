@@ -6,13 +6,13 @@ import BookCategories from '../../components/BookCategories';
 import { useLoaderData } from 'react-router-dom';
 
 const Home = () => {
-    const books = useLoaderData();
-    console.log(books);
+    // const {books} = useLoaderData();
+    // console.log(books);
 
     return (
         <div>
             <Carousel></Carousel>
-            <BookCategories></BookCategories>
+            <BookCategories ></BookCategories>
             <Blogs></Blogs>
             <RecentBlogs></RecentBlogs>
         </div>

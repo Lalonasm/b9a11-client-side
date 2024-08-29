@@ -23,7 +23,7 @@ const Navbar = () => {
     const navLinks =
         <>
             <li className="hover:bg-sky-700 rounded-md"><Link to="/">Home</Link></li>
-            <li className="hover:bg-sky-700 rounded-md"><Link to="/allArtCraft">Add Books</Link></li>
+            <li className="hover:bg-sky-700 rounded-md"><Link to="/addBook">Add Books</Link></li>
             <li className="hover:bg-sky-700 rounded-md"><Link to="/addCraft">All Books</Link></li>
             <li className="hover:bg-sky-700 rounded-md"><Link to="/myArtList">Borrowed Books
             </Link></li>

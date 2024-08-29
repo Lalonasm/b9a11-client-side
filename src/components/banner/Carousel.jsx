@@ -35,13 +35,13 @@ export default function Carousel() {
         className="mySwiper"
       >
         <SwiperSlide >
-          <Slide  image={bgimg1} text='All Types of academic & International books collection available'> </Slide>
+          <Slide image={bgimg1} text='All Types of academic & International books collection available'> </Slide>
         </SwiperSlide>
         <SwiperSlide>
-          <Slide image={bgimg2} text='All Types of academic & International books collection available'> </Slide>
+          <Slide image={bgimg2} text='Many digital resources, including databases and e-books, are accessible'> </Slide>
         </SwiperSlide>
         <SwiperSlide>
-          <Slide image={bgimg3} text='All Types of academic & International books collection available'> </Slide>
+          <Slide image={bgimg3} text='Regular exhibitions, lectures, and cultural events open to the public'> </Slide>
         </SwiperSlide>
 
 
