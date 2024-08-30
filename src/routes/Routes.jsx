@@ -6,6 +6,8 @@ import Register from "../pages/authentication/Register";
 import ErrorPage from "../pages/ErrorPage";
 import AddBook from "../pages/AddBooks";
 import BookDetails from "../pages/BookDetails";
+import AllBooks from "../pages/AllBooks";
+import BorrowedBooks from "../pages/BorrowedBooks";
 
 
 const router = createBrowserRouter([
@@ -34,7 +36,15 @@ const router = createBrowserRouter([
             {
                 path: '/book/:id',
                 element: <BookDetails></BookDetails>,
-                loader:({params})=>fetch(`${import.meta.env.VITE_API_URL}/book/${params.id}`)
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/book/${params.id}`)
+            },
+            {
+                path: '/allBooks',
+                element: <AllBooks></AllBooks>
+            },
+            {
+                path:'/borrowedBooks',
+                element:<BorrowedBooks></BorrowedBooks>
             }
         ]
     }

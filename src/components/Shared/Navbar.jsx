@@ -24,8 +24,8 @@ const Navbar = () => {
         <>
             <li className="hover:bg-sky-700 rounded-md"><Link to="/">Home</Link></li>
             <li className="hover:bg-sky-700 rounded-md"><Link to="/addBook">Add Books</Link></li>
-            <li className="hover:bg-sky-700 rounded-md"><Link to="/addCraft">All Books</Link></li>
-            <li className="hover:bg-sky-700 rounded-md"><Link to="/myArtList">Borrowed Books
+            <li className="hover:bg-sky-700 rounded-md"><Link to="/allBooks">All Books</Link></li>
+            <li className="hover:bg-sky-700 rounded-md"><Link to="/borrowedBooks">Borrowed Books
             </Link></li>
 
 
@@ -72,10 +72,10 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-            <ul className='menu menu-horizontal px-1'>
+                <ul className='menu menu-horizontal px-1'>
                     {/* <li> */}
-                        {/* <Link onClick={logOut}>Logout</Link> */}
-                        {/* <li className='mt-2'>
+                    {/* <Link onClick={logOut}>Logout</Link> */}
+                    {/* <li className='mt-2'>
                                 <button onClick={logOut} className='bg-gray-200 block text-center'>Logout</button>
                             </li> */}
                     {/* </li> */}
@@ -85,16 +85,16 @@ const Navbar = () => {
                             <Link to={'/login'}>Login</Link>
                         </li>
                     )}
-                    {user &&(
-                        
-                         <div className='w-10 rounded-full' title={user?.displayName}>
-                         <img
-                             referrerPolicy='no-referrer'
-                             alt='User Profile Photo'
-                             src={user?.photoURL}
-                         />
-                             <Link onClick={logOut}>Logout</Link>
-                     </div>
+                    {user && (
+
+                        <div className='w-10 rounded-full' title={user?.displayName}>
+                            <img
+                                referrerPolicy='no-referrer'
+                                alt='User Profile Photo'
+                                src={user?.photoURL}
+                            />
+                            <Link onClick={logOut}>Logout</Link>
+                        </div>
                     )}
                 </ul>
 
