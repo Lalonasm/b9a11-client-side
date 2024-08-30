@@ -32,7 +32,6 @@ const AddBooks = () => {
 
         const bookData = {
             book_title,
-            deadline,
             category,
             price,
             quantity,
@@ -67,12 +66,12 @@ const AddBooks = () => {
                 <form onSubmit={handleForm}>
                     <div className='grid grid-cols-1 gap-6 mt-4 sm:grid-cols-3'>
                         <div>
-                            <label className='text-gray-700 ' htmlFor='job_title'>
+                            <label className='text-gray-700 ' htmlFor='book_title'>
                                 Book Name
                             </label>
                             <input
-                                id='job_title'
-                                name='job_title'
+                                id='book_title'
+                                name='book_title'
                                 type='text'
                                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
@@ -92,12 +91,12 @@ const AddBooks = () => {
                             />
                         </div>
                         <div className='flex flex-col gap-2 '>
-                            <label className='text-gray-700 ' htmlFor='min_price'>
+                            <label className='text-gray-700 ' htmlFor='quantity'>
                                 Quantity
                             </label>
                             <input
-                                id='min_price'
-                                name='min_price'
+                                id='quantity'
+                                name='qunatity'
                                 type='number'
                                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
