@@ -73,7 +73,7 @@ const Register = () => {
 
         try {
             await signInWithGoogle();
-            toast.success('Signin Successful ');
+            // toast.success('Signin Successful ');
             Swal.fire({
                 position: "top-end",
                 icon: "success",
