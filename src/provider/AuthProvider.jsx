@@ -57,6 +57,7 @@ const AuthProvider = ({ children }) => {
       const loggedUser = { email: userEmail };
       setUser(currentUser)
       // console.log('CurrentUser-->', currentUser)
+      console.log('current User', currentUser); 
       setLoading(false)
       if (currentUser) {
         axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
@@ -65,8 +66,8 @@ const AuthProvider = ({ children }) => {
           })
       }
       else {
-        axios.post('http://localhost:5000/logout',loggedUser,{
-          withCredentials:true
+        axios.post('http://localhost:5000/logout', loggedUser, {
+          withCredentials: true
         })
       }
     })
