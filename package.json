@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "axios": "^1.7.5",
+    "cookie-parser": "^1.4.6",
     "firebase": "^10.13.0",
     "jsonwebtoken": "^9.0.2",
     "meraki": "^1.5.0",
