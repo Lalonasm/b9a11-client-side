@@ -11,6 +11,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import app from '../firebase/firebase.config';
+import axios from 'axios';
 
 
 
@@ -55,6 +56,13 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser)
       // console.log('CurrentUser-->', currentUser)
       setLoading(false)
+      if (currentUser) {
+        const loggedUser = { email: currentUser.email }
+        axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
+          .then(res => {
+            console.log( 'token response', res.data);
+          })
+      }
     })
     return () => {
       return unsubscribe()
