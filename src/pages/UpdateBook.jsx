@@ -1,44 +1,51 @@
-import { useContext, useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { AuthContext } from "../provider/AuthProvider";
-import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
-import axios from "axios";
-import Swal from "sweetalert2";
+import { useContext, useState } from "react"
+import { useLoaderData, useNavigate } from "react-router-dom"
+import { AuthContext } from "../provider/AuthProvider"
+import axios from "axios"
+import DatePicker from "react-datepicker"
+import toast from "react-hot-toast"
 
-const AddBooks = () => {
-    const [startDate, setStartDate] = useState(new Date());
-    const { user } = useContext(AuthContext);
-    const navigate = useNavigate();
 
-    const handleForm = async (e) => {
-        e.preventDefault();
+const UpdateBook = () => {
+    const navigate = useNavigate()
+    const book = useLoaderData()
+    const {
+        book_title,
+        book_image,
+        author_name,
+        category,
+        price,
+        quantity,
+        context,
+        rating,
+        description,
+        _id
+    } = book || {}
+    const { user } = useContext(AuthContext)
+    const [startDate, setStartDate] = useState(new Date() || new Date())
+    const handleForm = async e => {
+        e.preventDefault()
         const form = e.target;
         const email = form.email.value;
         const book_title = form.book_title.value;
+        const author_name = form.author_name.value;
+        const book_image = form.book_image.value;
+        const context = form.context.value;
         // const deadline = startDate;
         const category = form.category.value;
         const price = parseFloat(form.price.value);
         const quantity = parseFloat(form.quantity.value);
         const rating = parseFloat(form.rating.value);
         const description = form.description.value;
-        const context = form.context.value;
-
-
-        // const email = user?.email;
-        // const buyer_email = buyer_email;
-        // const status = 'Pending';
-
-
-
         const bookData = {
             book_title,
             category,
+            book_image,
+            author_name,
+            context,
             price,
             quantity,
             rating,
-            context,
             description,
             borrower: {
                 email,
@@ -46,31 +53,27 @@ const AddBooks = () => {
                 photo: user?.photoURL
             }
         }
-        try {
-            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/book`, bookData);
-            console.log(data);
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Successfully added",
-                showConfirmButton: false,
-                timer: 1500
-            });
-            toast.success('book Data Updated Successfully!')
-            navigate('/allBooks');
-        }
-        catch (err) {
-            console.log(err);
-            console.log('Hi , I am error', err.message)
-        }
-        // console.table(bidData);
-    }
 
+        try {
+            const { data } = await axios.put(
+                `${import.meta.env.VITE_API_URL}/book/${_id}`,
+                bookData
+            )
+            console.log(data)
+            Swal.fire("Update Successfully");
+            toast.success('book Data Updated Successfully!')
+
+            navigate('/allBooks')
+        } catch (err) {
+            console.log(err)
+            toast.error(err.message)
+        }
+    }
     return (
         <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
             <section className=' p-2 md:p-6 mx-auto bg-white rounded-md shadow-md '>
                 <h2 className='text-lg font-semibold text-gray-700 capitalize '>
-                    Add a Book
+                    Update a Job
                 </h2>
 
                 <form onSubmit={handleForm}>
@@ -82,6 +85,7 @@ const AddBooks = () => {
                             <input
                                 id='book_title'
                                 name='book_title'
+                                defaultValue={book_title}
                                 type='text'
                                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
@@ -108,6 +112,7 @@ const AddBooks = () => {
                                 id='quantity'
                                 name='qunatity'
                                 type='number'
+                                defaultValue={quantity}
                                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
                         </div>
@@ -119,6 +124,7 @@ const AddBooks = () => {
                             <select
                                 name='category'
                                 id='category'
+                                defaultValue={category}
                                 className='border p-2 rounded-md'
                             >
                                 <option value='Novel'>Novel</option>
@@ -136,6 +142,7 @@ const AddBooks = () => {
                                 id='book_image'
                                 name='book_image'
                                 type='text'
+                                defaultValue={book_image}
                                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
                         </div>
@@ -148,6 +155,7 @@ const AddBooks = () => {
                                 id='author_name'
                                 name='author_name'
                                 type='text'
+                                defaultValue={author_name}
                                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
                         </div>
@@ -159,6 +167,7 @@ const AddBooks = () => {
                                 id='price'
                                 name='price'
                                 type='number'
+                                defaultValue={price}
                                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
                         </div>
@@ -170,6 +179,7 @@ const AddBooks = () => {
                                 id='rating'
                                 name='rating'
                                 type='number'
+                                defaultValue={rating}
                                 placeholder="Rate this from 1 to 5"
                                 className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             />
@@ -183,6 +193,7 @@ const AddBooks = () => {
                             className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             name='description'
                             id='description'
+                            defaultValue={description}
                         ></textarea>
                     </div>
                     <div className='flex flex-col gap-2 mt-4'>
@@ -193,11 +204,12 @@ const AddBooks = () => {
                             className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40  focus:outline-none focus:ring'
                             name='context'
                             id='context'
+                            defaultValue={context}
                         ></textarea>
                     </div>
                     <div className='flex justify-center mt-6'>
                         <button className='px-12 py-2.5 leading-5 text-white transition-colors duration-300 transhtmlForm bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600'>
-                            Add Book
+                            Update
                         </button>
                     </div>
                 </form>
@@ -206,4 +218,4 @@ const AddBooks = () => {
     )
 }
 
-export default AddBooks
+export default UpdateBook

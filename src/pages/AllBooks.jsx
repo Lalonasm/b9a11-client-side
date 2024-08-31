@@ -2,24 +2,44 @@ import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../provider/AuthProvider"
 import axios from "axios";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
-const MyPostedJobs = () => {
+const AllBooks = () => {
 
     const { user } = useContext(AuthContext);
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        const getData = async () => {
-            const { data } = await axios(`${import.meta.env.VITE_API_URL}/books/${user?.email}`)
-            setBooks(data)
-        }
+
         getData()
     }, [user]);
 
+    const getData = async () => {
+        const { data } = await axios(`${import.meta.env.VITE_API_URL}/books/${user?.email}`)
+        setBooks(data)
+    }
+
+    const handleDelete = async id => {
+        try {
+            const { data } = await axios.delete(`${import.meta.env.VITE_API_URL}/book/${id}`);
+
+            console.log(data);
+            // toast.success('Delete Successful');
+            Swal.fire("Add Successfully");
 
 
+            // Refresh UI
+            getData();
+        }
+        catch (err) {
+            console.log(err.message);
+            toast.error(err.message);
+        }
+    }
 
-    console.log(books);
+
+    // console.log(books);
 
 
 
@@ -53,7 +73,7 @@ const MyPostedJobs = () => {
                                             scope='col'
                                             className='px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500'
                                         >
-                                            <span>Deadline</span>
+                                            <span>Added Date</span>
                                         </th>
 
                                         <th
@@ -84,7 +104,7 @@ const MyPostedJobs = () => {
                                     </tr>
                                 </thead>
                                 <tbody className='bg-white divide-y divide-gray-200 '>
-                                {
+                                    {
                                         books.map(book => (
                                             <tr key={book._id}>
                                                 <td className='px-4 py-4 text-sm text-gray-500  whitespace-nowrap'>
@@ -106,7 +126,7 @@ const MyPostedJobs = () => {
                                                                
                                                                 ${book.category === 'Thriller' && 'text-emerald-500 bg-emerald-100/60'}
                                                                 ${book.category === 'Sci-Fi' && 'text-slate-500 bg-emerald-100/60'}
-                                                                ${book.category === 'Sci-Fi' && 'text-red-300 bg-emerald-100/60'}
+                                                                ${book.category === 'History' && 'text-red-300 bg-emerald-100/60'}
                                                                    
                                                                 ${book.category === 'Drama' && 'text-pink-500 bg-pink-100/60'}
 
@@ -173,4 +193,4 @@ const MyPostedJobs = () => {
     )
 }
 
-export default MyPostedJobs
+export default AllBooks

@@ -11,7 +11,9 @@ const Root = () => {
         <div>
             <div className="max-w-6xl mx-auto">
                 <Navbar></Navbar>
-                <Outlet></Outlet>
+               <div className='min-h-[calc(100vh-306px)]'>
+               <Outlet></Outlet>
+               </div>
             </div>
             <Footer></Footer>
             {/* <Footer1></Footer1> */}
