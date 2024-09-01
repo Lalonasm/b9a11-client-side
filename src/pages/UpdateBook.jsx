@@ -2,7 +2,6 @@ import { useContext, useState } from "react"
 import { useLoaderData, useNavigate } from "react-router-dom"
 import { AuthContext } from "../provider/AuthProvider"
 import axios from "axios"
-import DatePicker from "react-datepicker"
 import toast from "react-hot-toast"
 import Swal from "sweetalert2"
 
@@ -32,7 +31,6 @@ const UpdateBook = () => {
         const author_name = form.author_name.value;
         const book_image = form.book_image.value;
         const context = form.context.value;
-        // const deadline = startDate;
         const category = form.category.value;
         const price = parseFloat(form.price.value);
         const quantity = parseFloat(form.quantity.value);
@@ -57,7 +55,7 @@ const UpdateBook = () => {
 
         try {
             const { data } = await axios.put(
-                `${import.meta.env.VITE_API_URL}/book/${_id}`,
+                `${import.meta.env.VITE_API_URL}/${_id}`,
                 bookData
             )
             console.log(data)

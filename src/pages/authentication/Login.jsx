@@ -49,7 +49,7 @@ const Login = () => {
             // USer login
             const result = await signIn(email, password);
             console.log(result);
-            toast.success('SignIn Successful');
+            // toast.success('SignIn Successful');
             Swal.fire({
                 position: "top-end",
                 icon: "success",

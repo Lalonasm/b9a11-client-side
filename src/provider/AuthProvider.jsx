@@ -59,17 +59,17 @@ const AuthProvider = ({ children }) => {
       // console.log('CurrentUser-->', currentUser)
       console.log('current User', currentUser); 
       setLoading(false)
-      if (currentUser) {
-        axios.post(`${import.meta.env.VITE_API_URL}/jwt`, loggedUser, { withCredentials: true })
-          .then(res => {
-            console.log('token response', res.data);
-          })
-      }
-      else {
-        axios.post(`${import.meta.env.VITE_API_URL}/logout`, loggedUser, {
-          withCredentials: true
-        })
-      }
+      // if (currentUser) {
+      //   axios.post(`${import.meta.env.VITE_API_URL}/jwt`, loggedUser, { withCredentials: true })
+      //     .then(res => {
+      //       console.log('token response', res.data);
+      //     })
+      // }
+      // else {
+      //   axios.post(`${import.meta.env.VITE_API_URL}/logout`, loggedUser, {
+      //     withCredentials: true
+      //   })
+      // }
     })
     return () => {
       return unsubscribe()

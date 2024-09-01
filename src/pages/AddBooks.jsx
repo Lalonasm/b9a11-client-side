@@ -48,7 +48,7 @@ const AddBooks = () => {
         }
         try {
             const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/book`, bookData);
-            console.log(data);
+            console.log('add book', data);
             Swal.fire({
                 position: "top-end",
                 icon: "success",
