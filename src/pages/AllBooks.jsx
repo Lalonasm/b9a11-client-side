@@ -16,17 +16,17 @@ const AllBooks = () => {
     }, [user]);
 
     const getData = async () => {
-        const { data } = await axios(`${import.meta.env.VITE_API_URL}/books/${user?.email}`)
+        const { data } = await axios(`https://b9-a11-server-side-nw9d2m2ot-lalonasms-projects.vercel.app/books/${user?.email}`)
         setBooks(data)
     }
 
     const handleDelete = async id => {
         try {
-            const { data } = await axios.delete(`${import.meta.env.VITE_API_URL}/book/${id}`);
+            const { data } = await axios.delete(`https://b9-a11-server-side-nw9d2m2ot-lalonasms-projects.vercel.app/book/${id}`);
 
             console.log(data);
             // toast.success('Delete Successful');
-            Swal.fire("Add Successfully");
+            Swal.fire("Delete Successfully");
 
 
             // Refresh UI

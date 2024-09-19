@@ -47,7 +47,7 @@ const AddBooks = () => {
             }
         }
         try {
-            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/book`, bookData);
+            const { data } = await axios.post(`https://b9-a11-server-side-nw9d2m2ot-lalonasms-projects.vercel.app/book`, bookData);
             console.log('add book', data);
             Swal.fire({
                 position: "top-end",

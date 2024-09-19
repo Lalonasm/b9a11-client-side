@@ -55,7 +55,7 @@ const UpdateBook = () => {
 
         try {
             const { data } = await axios.put(
-                `${import.meta.env.VITE_API_URL}/${_id}`,
+                `https://b9-a11-server-side-nw9d2m2ot-lalonasms-projects.vercel.app/${_id}`,
                 bookData
             )
             console.log(data)

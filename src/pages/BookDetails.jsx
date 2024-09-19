@@ -136,7 +136,7 @@ import { AuthContext } from "../provider/AuthProvider"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
-import  toast, { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 import Swal from "sweetalert2";
 
 const BookDetails = () => {
@@ -154,7 +154,7 @@ const BookDetails = () => {
         const form = e.target;
         const bookId = _id;
         const quantity = parseInt(form.quantity.value);
-        if (quantity < parseInt(1)) return  Swal.fire({
+        if (quantity < parseInt(1)) return Swal.fire({
             position: "top-end",
             icon: "success",
             title: "Confirm number more than 0",
@@ -184,7 +184,7 @@ const BookDetails = () => {
             // buyer
         }
         try {
-            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/borrow`, borrowData);
+            const { data } = await axios.post(`https://b9-a11-server-side-nw9d2m2ot-lalonasms-projects.vercel.app/borrow`, borrowData);
             console.log(data);
         }
         catch (err) {
@@ -238,7 +238,7 @@ const BookDetails = () => {
             {/* Place A Bid Form */}
             <section className='p-6 w-full  bg-white rounded-md shadow-md flex-1 md:min-h-[350px]'>
                 <h2 className='text-lg font-semibold text-gray-700 capitalize '>
-                   Borrowing Book
+                    Borrowing Book
                 </h2>
 
                 <form onSubmit={handleFormSubmission}>

@@ -11,7 +11,7 @@ const BookCategories = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const { data } = await axios(`${import.meta.env.VITE_API_URL}/books`,{withCredentials:true});
+            const { data } = await axios(`https://b9-a11-server-side-nw9d2m2ot-lalonasms-projects.vercel.app/books`,{withCredentials:true});
             setBooks(data);
         }
         getData();
