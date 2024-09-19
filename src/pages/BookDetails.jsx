@@ -184,7 +184,7 @@ const BookDetails = () => {
             // buyer
         }
         try {
-            const { data } = await axios.post(`https://b9-a11-server-side-nw9d2m2ot-lalonasms-projects.vercel.app/borrow`, borrowData);
+            const { data } = await axios.post(`https://b9-a11-server-side.vercel.app/borrow`, borrowData);
             console.log(data);
         }
         catch (err) {

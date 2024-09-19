@@ -16,13 +16,13 @@ const AllBooks = () => {
     }, [user]);
 
     const getData = async () => {
-        const { data } = await axios(`https://b9-a11-server-side-nw9d2m2ot-lalonasms-projects.vercel.app/books/${user?.email}`)
+        const { data } = await axios(`https://b9-a11-server-side.vercel.app/books/${user?.email}`)
         setBooks(data)
     }
 
     const handleDelete = async id => {
         try {
-            const { data } = await axios.delete(`https://b9-a11-server-side-nw9d2m2ot-lalonasms-projects.vercel.app/book/${id}`);
+            const { data } = await axios.delete(`https://b9-a11-server-side.vercel.app/book/${id}`);
 
             console.log(data);
             // toast.success('Delete Successful');

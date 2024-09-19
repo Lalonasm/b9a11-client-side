@@ -21,7 +21,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                // loader: () => fetch(`${https://b9-a11-server-side-nw9d2m2ot-lalonasms-projects.vercel.app}/books`)
+                // loader: () => fetch(`${https://b9-a11-server-side.vercel.app}/books`)
             },
             {
                 path: '/login',
@@ -38,12 +38,12 @@ const router = createBrowserRouter([
             {
                 path: '/book/:id',
                 element: <BookDetails></BookDetails>,
-                loader: ({ params }) => fetch(`https://b9-a11-server-side-nw9d2m2ot-lalonasms-projects.vercel.app/book/${params.id}`)
+                loader: ({ params }) => fetch(`https://b9-a11-server-side.vercel.app/book/${params.id}`)
             },
             {
                 path: '/update/:id',
                 element: <PrivateRoute><UpdateBook /></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://b9-a11-server-side-nw9d2m2ot-lalonasms-projects.vercel.app/book/${params.id}`)
+                loader: ({ params }) => fetch(`https://b9-a11-server-side.vercel.app/book/${params.id}`)
             },
             {
                 path: '/allBooks',

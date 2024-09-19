@@ -47,7 +47,7 @@ const AddBooks = () => {
             }
         }
         try {
-            const { data } = await axios.post(`https://b9-a11-server-side-nw9d2m2ot-lalonasms-projects.vercel.app/book`, bookData);
+            const { data } = await axios.post(`https://b9-a11-server-side.vercel.app/book`, bookData);
             console.log('add book', data);
             Swal.fire({
                 position: "top-end",
@@ -57,7 +57,7 @@ const AddBooks = () => {
                 timer: 1500
             });
             toast.success('book Data Updated Successfully!')
-            navigate('/allBooks');
+            // navigate('/allBooks');
         }
         catch (err) {
             console.log(err);
